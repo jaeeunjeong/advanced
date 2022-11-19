@@ -17,11 +17,17 @@ configurations {
 repositories {
     mavenCentral()
 }
+ext {
+    mapstructVersion = '1.4.2.Final'
+}
 
 dependencies {
+    implementation "org.mapstruct:mapstruct:${mapstructVersion}"
+    compileOnly 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testCompileOnly 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
