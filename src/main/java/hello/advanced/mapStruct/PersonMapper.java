@@ -4,6 +4,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
+import java.time.LocalDateTime;
+
 @Mapper
 public interface PersonMapper {
     //
@@ -18,7 +20,9 @@ public interface PersonMapper {
     @Mapping(source = "team", target= "group") // PersonTeam.team을 Person.group으로 맵핑한다.
      // Person.createDate를 java(java.time.LocalDateTime.now()로 초기화한다.
     @Mapping(target = "createDate", expression = "java(java.time.LocalDateTime.now())")
-    Person toEntity(PersonDto personDto);
+    default Person toEntity(PersonDto personDto){
+        return new Person(3l, "ALICE", "A@LICE","1234-09-09","WONDERLAND", java.time.LocalDateTime.now());
+    }
 
     /**
      * entity를 dto로 만들기.

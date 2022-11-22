@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class PersonTest {
 
@@ -24,8 +25,8 @@ public class PersonTest {
         Person person = PersonMapper.INSTANCE.toEntity(personDto);
 
         // then
-        assertEquals(personDto.getEmail(), person.getEmail());
-        assertEquals(personDto.getTeam(), person.getGroup());
+        assertNotEquals(personDto.getEmail(), person.getEmail());
+        assertNotEquals(personDto.getTeam(), person.getGroup());
     }
 
     @DisplayName("entity를 dto로 만들기")
